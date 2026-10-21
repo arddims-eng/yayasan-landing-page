@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yayasan Prakarsa Amal Mulia | Menebar Kebaikan, Membangun Harapan</title>
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="js/tailwind-config.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript><!-- tanpa JavaScript, konten tetap terlihat -->
+</head>
+<body class="bg-white antialiased">
+
+<!-- NAVBAR -->
+<div id="halaman-utama" class="halaman-utama-part">
+<header class="sticky top-0 z-50 border-b border-brand-100 bg-brand-25/90 backdrop-blur-md">
+  <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+    <a href="#" class="flex items-center gap-3">
+      <img src="assets/logo.png" alt="Logo Yayasan Prakarsa Amal Mulia" class="cursor-pointer h-11 w-11 lg:h-12 lg:w-12 shrink-0" onclick="bukaLogoBesar(event);" />
+      <span class="flex flex-col leading-none">
+        <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-600">Yayasan</span>
+        <span class="text-base sm:text-lg font-bold text-brand-900">Prakarsa Amal Mulia</span>
+      </span>
+    </a>
+
+    <div class="hidden lg:flex items-center gap-9">
+      <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-donasi')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Mulai Donasi</a>
+      <a href="#tentang" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Tentang Kami</a>
+      <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-kegiatan')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Kegiatan</a>
+      <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-legalitas')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Legalitas dan Struktur Yayasan</a>
+      <a href="#kontak" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Kontak Kami</a>
+      <button type="button" onclick="toggleDarkMode()" aria-label="Ganti mode tampilan" class="flex h-9 w-9 items-center justify-center rounded-full border border-brand-200 text-base">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+
+
+    <div class="flex items-center gap-2 lg:hidden">
+      <button type="button" onclick="toggleDarkMode()" aria-label="Ganti mode tampilan" class="flex h-10 w-10 items-center justify-center rounded-full border border-brand-200 text-base">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <button id="menuBtn" aria-label="Buka menu" class="flex h-10 w-10 items-center justify-center rounded-full border border-brand-200">
+        <span class="relative block h-3 w-5">
+          <span id="bar1" class="absolute left-0 top-0 block h-[2px] w-5 bg-brand-900 transition-all"></span>
+          <span id="bar2" class="absolute left-0 top-2.5 block h-[2px] w-5 bg-brand-900 transition-all"></span>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+
+  <div id="mobileMenu" class="overflow-hidden max-h-0 opacity-0 border-t border-brand-100 bg-brand-25 transition-all duration-300 lg:hidden">
+    <div class="flex flex-col gap-4 px-6 py-6">
+      <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-donasi')" class="text-sm font-medium text-brand-800">Mulai Donasi</a>
+      <a href="#tentang" class="text-sm font-medium text-brand-800">Tentang Kami</a>
+      <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-kegiatan')" class="text-sm font-medium text-brand-800">Kegiatan</a>
+      <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-legalitas')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Legalitas dan Struktur Yayasan</a>
+      <a href="#kontak" class="text-sm font-medium text-brand-800">Kontak Kami</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="tentang" class="hero-blob relative overflow-hidden bg-brand-25 pb-40 pt-16 lg:pt-24">
+  <div class="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2 lg:px-8">
+    <div class="reveal">
+      <h1 class="mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight text-brand-900 sm:text-5xl lg:text-[3.4rem]">
+        Menebar kebaikan,<br />membangun harapan<br />bagi sesama.
+      </h1>
+      <p id="labelTentangKami" class="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-black">Tentang Kami</p>
+      <p class="mt-2 max-w-md text-base text-brand-800/70 sm:text-lg">
+        Kami adalah yayasan yang bergerak di bidang pelatihan dan pemberdayaan anak yatim, menyantuni anak yatim binaan kami secara berkelanjutan sebagai bekal kehidupan mereka kelak. Kini, Yayasan Prakarsa Amal Mulia juga menghadirkan program pendidikan, kesehatan, dan bantuan sosial yang tepat sasaran, transparan, serta berlandaskan akhlak mulia bagi masyarakat yang membutuhkan.
+      </p>
+    </div>
+
+    <div class="reveal hidden self-start lg:block">
+      <div class="mx-auto flex h-[420px] w-full max-w-md items-start justify-center pt-2">
+        <img src="assets/logo.png" alt="Logo Yayasan Prakarsa Amal Mulia" class="h-64 w-64 drop-shadow-xl" />
+      </div>
+    </div>
+  </div>
+
+  
+</section>
+
+<!-- FEATURES -->
+<section id="program" class="relative z-10 -mt-28 px-6 lg:px-8">
+  <div class="reveal mx-auto max-w-6xl rounded-3xl bg-white p-6 shadow-soft ring-1 ring-brand-50 sm:p-8 lg:p-10">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div>
+        <h2 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">Program yang tumbuh bersama kebutuhan umat.</h2>
+      </div>
+      <p class="self-center text-sm text-brand-800 sm:text-base">Kami merancang program sosial yang berkelanjutan agar bantuan yang disalurkan benar-benar berdampak dan tepat sasaran bagi para penerima manfaat di setiap wilayah dampingan kami.</p>
+    </div>
+
+    <div class="mt-14 grid gap-10 sm:grid-cols-3">
+      <div class="group reveal">
+        <div class="feature-icon-box flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-600 transition-colors duration-300 group-hover:bg-brand-700">
+          <svg viewBox="0 0 24 24" fill="none" class="feature-icon h-7 w-7 stroke-white" stroke-width="1.6"><path d="M7 10l-4 4 4 4M17 6l4 4-4 4M12 4v16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="mt-5 text-lg font-semibold text-brand-900">Penyaluran Cepat</h3>
+        <p class="mt-2 text-sm leading-relaxed text-brand-800">Dana yang terkumpul disalurkan secara berkala tanpa dipungut biaya administrasi.</p>
+      </div>
+      <div class="group reveal">
+        <div class="feature-icon-box flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-600 transition-colors duration-300 group-hover:bg-brand-700">
+          <svg viewBox="0 0 24 24" fill="none" class="feature-icon h-7 w-7 stroke-white" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="mt-5 text-lg font-semibold text-brand-900">Multi Program</h3>
+        <p class="mt-2 text-sm leading-relaxed text-brand-800">Kelola donasi Anda untuk berbagai program pendidikan, kesehatan, dan sosial sekaligus.</p>
+      </div>
+      <div class="group reveal">
+        <div class="feature-icon-box flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-600 transition-colors duration-300 group-hover:bg-brand-700">
+          <svg viewBox="0 0 24 24" fill="none" class="feature-icon h-7 w-7 stroke-white" stroke-width="1.6"><path d="M12 3l8 3.5v5c0 5-3.4 8.2-8 9.5-4.6-1.3-8-4.5-8-9.5v-5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="mt-5 text-lg font-semibold text-brand-900">Transparansi Penuh</h3>
+        <p class="mt-2 text-sm leading-relaxed text-brand-800">Setiap penyaluran dana dilaporkan secara terbuka dan dapat diakses kapan saja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="visi-misi" class="bg-white px-6 pt-28 pb-16 lg:px-8">
+  <div class="mx-auto max-w-5xl text-center">
+    <p id="labelVisiMisi" class="text-xs font-bold uppercase tracking-[0.2em] text-black">Visi &amp; Misi</p>
+    <h2 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">Arah dan tujuan kami</h2>
+  </div>
+  <div class="mx-auto mt-10 grid max-w-5xl gap-6 sm:grid-cols-2">
+    <div class="reveal rounded-3xl bg-brand-50 p-6 sm:p-7">
+      <h3 class="text-lg font-bold text-brand-900">Visi</h3>
+      <p class="mt-3 text-sm leading-relaxed text-brand-800 sm:text-base">Menjadi yayasan terpercaya yang berperan aktif membangun generasi mandiri, berakhlak, dan berdaya guna, melalui pendidikan, kesehatan, dan pemberdayaan sosial yang dikelola secara transparan dan berkelanjutan.</p>
+    </div>
+    <div class="reveal rounded-3xl bg-brand-50 p-6 sm:p-7">
+      <h3 class="text-lg font-bold text-brand-900">Misi</h3>
+      <ol class="mt-3 list-decimal space-y-2 pl-4 text-sm leading-relaxed text-brand-800 sm:text-base">
+        <li>Memberikan pembinaan dan santunan rutin bagi anak yatim dan dhuafa secara berkelanjutan.</li>
+        <li>Menyediakan akses pendidikan dan layanan kesehatan yang tepat sasaran bagi masyarakat yang membutuhkan.</li>
+        <li>Mendorong pengembangan potensi diri anak yatim binaan sebagai bekal kehidupan yang lebih baik.</li>
+        <li>Mengelola donasi secara transparan dan akuntabel agar dapat dipertanggungjawabkan kepada publik.</li>
+        <li>Membangun sarana dan prasarana yang mendukung keberlanjutan program-program sosial yayasan.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="kegiatan" class="bg-white px-6 py-28 lg:px-8">
+  <div class="mx-auto max-w-6xl">
+    <div class="reveal text-center">
+      <p id="labelMengapaKami" class="text-xs font-bold uppercase tracking-[0.2em] text-black">Mengapa Kami</p>
+      <h2 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">Mengapa mereka mempercayai kami</h2>
+    </div>
+
+    <div class="mt-14 grid gap-6 lg:grid-cols-2">
+      <div class="reveal flex h-full flex-col justify-between rounded-3xl bg-brand-50 p-6 transition-shadow hover:shadow-card sm:p-8">
+        <p id="teks3K" class="text-5xl font-extrabold text-brand-600 sm:text-6xl">3K+</p>
+        <p class="mt-6 text-lg text-brand-900">Penerima manfaat yang telah terbantu di seluruh Purwakarta</p>
+      </div>
+
+      <div class="reveal flex h-full flex-col items-center justify-center rounded-3xl bg-brand-50 p-6 text-center transition-shadow hover:shadow-card sm:p-8">
+        <p class="text-lg font-bold text-brand-900 sm:text-2xl lg:text-3xl">Penyaluran dana yang cepat dan tepat sasaran</p>
+      </div>
+
+      <div class="reveal lg:col-span-2 flex h-full flex-col items-center justify-center gap-3 rounded-3xl bg-brand-50 p-6 text-center transition-shadow hover:shadow-card sm:p-8">
+        <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 text-white">
+          <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7 stroke-white" stroke-width="1.8"><path d="M9 12l2 2 4-4M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="text-lg font-bold text-brand-900 sm:text-xl">Terverifikasi Kementerian Hukum RI</p>
+        <p class="text-sm text-brand-800">Berbadan hukum resmi dan sah beroperasi sebagai yayasan.</p>
+      </div>
+
+      <div class="reveal lg:col-span-2 grid gap-8 rounded-3xl bg-brand-50 p-6 transition-shadow hover:shadow-card sm:p-8 lg:grid-cols-2">
+        <div class="flex flex-col justify-center">
+          <h3 class="text-2xl font-bold text-brand-900">Dana 100% Tersalurkan</h3>
+          <p class="mt-3 text-sm text-brand-800">Kelola donasi Anda tanpa potongan tersembunyi &mdash; seluruh dana disalurkan sesuai program yang Anda pilih.</p>
+        </div>
+        <div class="rounded-2xl bg-white p-5 shadow-card">
+          <div class="flex items-center justify-between text-xs text-brand-800/50">
+            <span>Ringkasan</span><span>6 Bulan ▾</span>
+          </div>
+          <p class="mt-2 text-2xl font-bold text-brand-900">Rp 1.876.580.000</p>
+          <svg viewBox="0 0 300 100" class="mt-4 h-24 w-full">
+            <defs>
+              <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3B8A3E" stop-opacity="0.35" />
+                <stop offset="100%" stop-color="#3B8A3E" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M0 80 L40 68 L80 70 L120 55 L160 48 L200 40 L240 25 L300 10 L300 100 L0 100 Z" fill="url(#chartFill)" />
+            <path d="M0 80 L40 68 L80 70 L120 55 L160 48 L200 40 L240 25 L300 10" fill="none" stroke="#2C6E35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="misi" class="bg-white px-6 pb-8 pt-16 lg:px-8">
+  <div class="mx-auto max-w-5xl text-center">
+    <div class="reveal">
+      <p id="labelMisiKami" class="text-xs font-bold uppercase tracking-[0.2em] text-black">Misi Kami</p>
+      <h2 class="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">Kami telah membantu ribuan masyarakat</h2>
+      <p class="mx-auto mt-4 max-w-xl text-sm text-brand-800 sm:text-base">Ratusan program di berbagai wilayah telah memberi dampak nyata bagi kehidupan masyarakat yang membutuhkan.</p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-3 gap-6">
+      <div class="reveal"><p class="text-4xl font-extrabold text-brand-900 sm:text-5xl">98%</p><p class="mt-2 text-xs text-brand-800 sm:text-sm">Dana tersalurkan tepat sasaran</p></div>
+      <div class="reveal"><p class="text-4xl font-extrabold text-brand-900 sm:text-5xl">5.000+</p><p class="mt-2 text-xs text-brand-800 sm:text-sm">Penerima manfaat</p></div>
+      <div class="reveal"><p class="text-4xl font-extrabold text-brand-900 sm:text-5xl">10+</p><p class="mt-2 text-xs text-brand-800 sm:text-sm">Tahun pengabdian</p></div>
+    </div>
+  </div>
+</section>
+</div><!-- /halaman-utama -->
+
+<!-- HALAMAN DONASI (tampil penuh saat "Mulai Donasi" diklik) -->
+<div id="halaman-donasi" class="hidden">
+  <div class="sticky top-0 z-50 border-b border-brand-100 bg-brand-25/90 backdrop-blur-md">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+      <a href="javascript:void(0)" onclick="kembaliKeBeranda()" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Logo Yayasan Prakarsa Amal Mulia" class="cursor-pointer h-11 w-11 shrink-0" onclick="bukaLogoBesar(event);" />
+        <span class="flex flex-col leading-none">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-600">Yayasan</span>
+          <span class="text-base font-bold text-brand-900">Prakarsa Amal Mulia</span>
+        </span>
+      </a>
+      <div class="hidden lg:flex items-center gap-9">
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-donasi')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Mulai Donasi</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('tentang')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Tentang Kami</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-kegiatan')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Kegiatan</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-legalitas')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Legalitas dan Struktur Yayasan</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('kontak')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Kontak Kami</a>
+        <button type="button" onclick="toggleDarkMode()" aria-label="Ganti mode tampilan" class="flex h-9 w-9 items-center justify-center rounded-full border border-brand-200 text-base">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2 lg:hidden">
+        <button type="button" onclick="toggleDarkMode()" aria-label="Ganti mode tampilan" class="flex h-10 w-10 items-center justify-center rounded-full border border-brand-200 text-base">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button id="menuBtn2" aria-label="Buka menu" class="flex h-10 w-10 items-center justify-center rounded-full border border-brand-200">
+          <span class="relative block h-3 w-5">
+            <span id="bar1b" class="absolute left-0 top-0 block h-[2px] w-5 bg-brand-900 transition-all"></span>
+            <span id="bar2b" class="absolute left-0 top-2.5 block h-[2px] w-5 bg-brand-900 transition-all"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu2" class="overflow-hidden max-h-0 opacity-0 border-t border-brand-100 bg-brand-25 transition-all duration-300 lg:hidden">
+      <div class="flex flex-col gap-4 px-6 py-6">
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda()" class="text-sm font-medium text-brand-800">Kembali ke Beranda</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('tentang')" class="text-sm font-medium text-brand-800">Tentang Kami</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-kegiatan')" class="text-sm font-medium text-brand-800">Kegiatan</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-legalitas')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Legalitas dan Struktur Yayasan</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('kontak')" class="text-sm font-medium text-brand-800">Kontak Kami</a>
+      </div>
+    </div>
+  </div>
+
+<!-- DONASI (Program + Metode) -->
+<section id="donasi" class="bg-white px-6 pb-28 pt-16 lg:px-8">
+  <div class="mx-auto max-w-5xl text-center">
+    <p id="program-donasi" class="reveal text-xs font-bold uppercase tracking-[0.2em] text-brand-900">Program Donasi Kami</p>
+
+    <div class="mt-6 grid gap-6 sm:grid-cols-3">
+      <div id="card-donasi-rutin" onclick="pilihProgram('Donasi Rutin','card-donasi-rutin')" class="reveal program-card group relative overflow-hidden rounded-3xl bg-brand-50 p-6 text-left text-brand-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-card sm:p-8 cursor-pointer">
+        <h3 class="program-title text-2xl font-bold">Donasi Rutin</h3>
+        <p class="program-desc mt-3 text-sm">Pembagian untuk anak yatim piatu dan dhuafa.</p>
+        <div class="mt-10">
+          <p class="program-desc text-xs font-medium uppercase tracking-wide">Salurkan Donasi:<br />Transfer Bank &amp; QRIS</p>
+        </div>
+      </div>
+      <div id="card-pembangunan" onclick="pilihProgram('Pembangunan','card-pembangunan')" class="reveal program-card group relative overflow-hidden rounded-3xl bg-brand-50 p-6 text-left text-brand-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-card sm:p-8 cursor-pointer">
+        <h3 class="program-title text-2xl font-bold">Pembangunan</h3>
+        <p class="program-desc mt-3 text-sm">Donasi untuk pembangunan sarana yayasan.</p>
+        <div class="mt-10">
+          <p class="program-desc text-xs font-medium uppercase tracking-wide">Salurkan Donasi:<br />Transfer Bank &amp; QRIS</p>
+        </div>
+      </div>
+      <div id="card-ibadah-sosial" onclick="pilihProgram('Ibadah Sosial','card-ibadah-sosial')" class="reveal program-card group relative overflow-hidden rounded-3xl bg-brand-50 p-6 text-left text-brand-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-card sm:p-8 cursor-pointer">
+        <h3 class="program-title text-2xl font-bold">Ibadah Sosial</h3>
+        <p class="program-desc mt-3 text-sm">Zakat, infaq, sedekah, wakaf, dan qurban.</p>
+        <div class="mt-10">
+          <p class="program-desc text-xs font-medium uppercase tracking-wide">Salurkan Donasi:<br />Transfer Bank &amp; QRIS</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="metode-donasi" class="reveal mx-auto mt-10 w-full max-w-sm rounded-3xl bg-brand-50 p-5 text-left shadow-card sm:p-6">
+      <p class="text-center text-lg font-semibold text-brand-900">Metode Donasi</p>
+      <p id="warning-program" class="mt-2 hidden text-center text-xs font-medium text-red-500">Anda belum memilih program donasi.</p>
+      <div class="mt-3 space-y-2">
+        <button type="button" onclick="pilihMetode(this,'bank')" class="metode-opt flex w-full items-center rounded-xl border border-brand-100 bg-white px-4 py-2.5 text-left transition-colors">
+          <span class="flex items-center gap-2 text-sm font-medium text-brand-900">🏦 Transfer Bank</span>
+        </button>
+        <button type="button" onclick="pilihMetode(this,'qris')" class="metode-opt flex w-full items-center rounded-xl border border-brand-100 bg-white px-4 py-2.5 text-left transition-colors">
+          <span class="flex items-center gap-2 text-sm font-medium text-brand-900">📱 QRIS</span>
+        </button>
+      </div>
+      <textarea id="input-doa" maxlength="500" autocomplete="off" placeholder="Tulis doa/pesan Anda (opsional)" rows="2" class="mt-3 w-full resize-none rounded-xl border border-brand-100 bg-white px-3 py-2 text-xs text-brand-900 placeholder:text-brand-800/40 focus:border-brand-400 focus:outline-none"></textarea>
+      <button id="btn-salurkan" onclick="kirimDonasi()" class="mt-3 w-full rounded-xl bg-brand-900 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-800">Salurkan Donasi</button>
+    </div>
+
+    <!-- Modal: input nominal donasi -->
+    <div id="modal-nominal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/50 px-6">
+      <div class="reveal visible w-full max-w-sm rounded-3xl bg-white p-6 shadow-soft">
+        <p class="text-lg font-semibold text-brand-900">Masukkan Nominal Donasi</p>
+        <p id="modal-ringkasan" class="mt-1 text-xs text-brand-800/70"></p>
+        <div class="mt-4 flex items-center rounded-xl border border-brand-200 px-3 py-2.5">
+          <span class="text-sm font-semibold text-brand-800">Rp</span>
+          <input id="input-nominal" type="number" min="0" step="1" autocomplete="off" inputmode="numeric" placeholder="50000" oninput="perbaruiPratinjauNominal()" onfocus="kosongkanJikaNol(this)" class="ml-2 w-full border-none text-sm font-bold placeholder:text-brand-800/40 focus:outline-none focus:ring-0" />
+        </div>
+        <p id="preview-nominal" class="mt-1.5 text-xs font-semibold text-brand-600">= Rp0</p>
+        <p id="warning-nominal" class="mt-2 hidden text-xs font-medium text-red-500">Nominal donasi wajib diisi.</p>
+        <div class="mt-5 flex gap-3">
+          <button type="button" onclick="tutupModalNominal()" class="flex-1 rounded-xl border border-brand-200 py-2.5 text-sm font-semibold text-brand-800 transition-all hover:bg-brand-50">Batal</button>
+          <button type="button" onclick="lanjutkanDonasi()" class="flex-1 rounded-xl bg-brand-900 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-800">Lanjutkan ke WA</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="bg-brand-25 px-6 py-20 lg:px-8">
+  <div id="stepsCard" class="reveal mx-auto max-w-6xl rounded-3xl bg-brand-900 p-6 sm:p-8 lg:p-10">
+    <p id="stepsLabel" class="text-xs font-bold uppercase tracking-[0.2em] text-white">Langkah Donasi</p>
+    <h2 class="mt-3 max-w-2xl text-3xl font-bold leading-tight text-white sm:text-4xl">Salurkan kebaikan hanya dalam 4 langkah mudah.</h2>
+
+    <div class="mt-12 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
+      <div class="step-card reveal h-full rounded-2xl bg-white/5 p-4 sm:p-5 transition-colors duration-300 hover:bg-white/10">
+        <span class="step-number text-3xl sm:text-4xl font-extrabold text-white/25">1</span>
+        <h3 class="mt-5 text-lg font-semibold text-white">Pilih Program</h3>
+        <p class="mt-2 text-sm leading-relaxed text-white">Tentukan program donasi yang ingin Anda dukung dari daftar program kami.</p>
+      </div>
+      <div class="step-card reveal h-full rounded-2xl bg-white/5 p-4 sm:p-5 transition-colors duration-300 hover:bg-white/10">
+        <span class="step-number text-3xl sm:text-4xl font-extrabold text-white/25">2</span>
+        <h3 class="mt-5 text-lg font-semibold text-white">Pilih Metode & Nominal</h3>
+        <p class="mt-2 text-sm leading-relaxed text-white">Pilih Transfer Bank atau QRIS, lalu masukkan nominal donasi Anda.</p>
+      </div>
+      <div class="step-card reveal h-full rounded-2xl bg-white/5 p-4 sm:p-5 transition-colors duration-300 hover:bg-white/10">
+        <span class="step-number text-3xl sm:text-4xl font-extrabold text-white/25">3</span>
+        <h3 class="mt-5 text-lg font-semibold text-white">Konfirmasi via WhatsApp</h3>
+        <p class="mt-2 text-sm leading-relaxed text-white">Lanjutkan ke WhatsApp untuk kirim konfirmasi donasi Anda ke yayasan.</p>
+      </div>
+      <div class="step-card reveal h-full rounded-2xl bg-white/5 p-4 sm:p-5 transition-colors duration-300 hover:bg-white/10">
+        <span class="step-number text-3xl sm:text-4xl font-extrabold text-white/25">4</span>
+        <h3 class="mt-5 text-lg font-semibold text-white">Pantau Penyaluran</h3>
+        <p class="mt-2 text-sm leading-relaxed text-white">Terima laporan penyaluran dana secara berkala dan transparan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div><!-- /halaman-donasi -->
+
+<!-- HALAMAN KEGIATAN (kosong, tampil penuh saat "Kegiatan" diklik) -->
+<div id="halaman-kegiatan" class="hidden">
+  <div class="sticky top-0 z-50 border-b border-brand-100 bg-brand-25/90 backdrop-blur-md">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+      <a href="javascript:void(0)" onclick="kembaliKeBeranda()" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Logo Yayasan" class="cursor-pointer h-11 w-11" onclick="bukaLogoBesar(event);" />
+        <span class="flex flex-col leading-none">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-600">Yayasan</span>
+          <span class="text-base font-bold text-brand-900">Prakarsa Amal Mulia</span>
+        </span>
+      </a>
+      <div class="hidden lg:flex items-center gap-9">
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-donasi')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Mulai Donasi</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('tentang')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Tentang Kami</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-kegiatan')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Kegiatan</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-legalitas')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Legalitas dan Struktur Yayasan</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('kontak')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Kontak Kami</a>
+        <button type="button" onclick="toggleDarkMode()" aria-label="Ganti mode tampilan" class="flex h-9 w-9 items-center justify-center rounded-full border border-brand-200 text-base">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2 lg:hidden">
+        <button type="button" onclick="toggleDarkMode()" aria-label="Ganti mode tampilan" class="flex h-10 w-10 items-center justify-center rounded-full border border-brand-200 text-base">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button id="menuBtn3" aria-label="Buka menu" class="flex h-10 w-10 items-center justify-center rounded-full border border-brand-200">
+          <span class="relative block h-3 w-5">
+            <span id="bar1c" class="absolute left-0 top-0 block h-[2px] w-5 bg-brand-900 transition-all"></span>
+            <span id="bar2c" class="absolute left-0 top-2.5 block h-[2px] w-5 bg-brand-900 transition-all"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu3" class="overflow-hidden max-h-0 opacity-0 border-t border-brand-100 bg-brand-25 transition-all duration-300 lg:hidden">
+      <div class="flex flex-col gap-4 px-6 py-6">
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda()" class="text-sm font-medium text-brand-800">Kembali ke Beranda</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-donasi')" class="text-sm font-medium text-brand-800">Mulai Donasi</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('tentang')" class="text-sm font-medium text-brand-800">Tentang Kami</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-kegiatan')" class="text-sm font-medium text-brand-800">Kegiatan</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-legalitas')" class="text-sm font-medium text-brand-800">Legalitas dan Struktur Yayasan</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('kontak')" class="text-sm font-medium text-brand-800">Kontak Kami</a>
+      </div>
+    </div>
+  </div>
+<div class="mx-auto max-w-6xl px-6 py-24 text-center lg:px-8">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-500">Kegiatan</p>
+    <h1 class="mt-3 text-2xl font-bold text-brand-900 sm:text-3xl">Halaman ini sedang disiapkan</h1>
+  </div>
+</div><!-- /halaman-kegiatan -->
+
+<!-- HALAMAN LEGALITAS (kosong, tampil penuh saat "Legalitas dan Struktur Yayasan" diklik) -->
+<div id="halaman-legalitas" class="hidden">
+  <div class="sticky top-0 z-50 border-b border-brand-100 bg-brand-25/90 backdrop-blur-md">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+      <a href="javascript:void(0)" onclick="kembaliKeBeranda()" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Logo Yayasan" class="cursor-pointer h-11 w-11" onclick="bukaLogoBesar(event);" />
+        <span class="flex flex-col leading-none">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-600">Yayasan</span>
+          <span class="text-base font-bold text-brand-900">Prakarsa Amal Mulia</span>
+        </span>
+      </a>
+      <div class="hidden lg:flex items-center gap-9">
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-donasi')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Mulai Donasi</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('tentang')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Tentang Kami</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-kegiatan')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Kegiatan</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-legalitas')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Legalitas dan Struktur Yayasan</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('kontak')" class="relative text-sm font-medium text-brand-800/80 hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300 hover:after:w-full">Kontak Kami</a>
+        <button type="button" onclick="toggleDarkMode()" aria-label="Ganti mode tampilan" class="flex h-9 w-9 items-center justify-center rounded-full border border-brand-200 text-base">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2 lg:hidden">
+        <button type="button" onclick="toggleDarkMode()" aria-label="Ganti mode tampilan" class="flex h-10 w-10 items-center justify-center rounded-full border border-brand-200 text-base">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button id="menuBtn4" aria-label="Buka menu" class="flex h-10 w-10 items-center justify-center rounded-full border border-brand-200">
+          <span class="relative block h-3 w-5">
+            <span id="bar1d" class="absolute left-0 top-0 block h-[2px] w-5 bg-brand-900 transition-all"></span>
+            <span id="bar2d" class="absolute left-0 top-2.5 block h-[2px] w-5 bg-brand-900 transition-all"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu4" class="overflow-hidden max-h-0 opacity-0 border-t border-brand-100 bg-brand-25 transition-all duration-300 lg:hidden">
+      <div class="flex flex-col gap-4 px-6 py-6">
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda()" class="text-sm font-medium text-brand-800">Kembali ke Beranda</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-donasi')" class="text-sm font-medium text-brand-800">Mulai Donasi</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('tentang')" class="text-sm font-medium text-brand-800">Tentang Kami</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-kegiatan')" class="text-sm font-medium text-brand-800">Kegiatan</a>
+        <a href="javascript:void(0)" onclick="tampilkanHalaman('halaman-legalitas')" class="text-sm font-medium text-brand-800">Legalitas dan Struktur Yayasan</a>
+        <a href="javascript:void(0)" onclick="kembaliKeBeranda('kontak')" class="text-sm font-medium text-brand-800">Kontak Kami</a>
+      </div>
+    </div>
+  </div>
+<div class="mx-auto max-w-6xl px-6 py-24 text-center lg:px-8">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-500">Legalitas dan Struktur Yayasan</p>
+    <h1 class="mt-3 text-2xl font-bold text-brand-900 sm:text-3xl">Halaman ini sedang disiapkan</h1>
+  </div>
+</div><!-- /halaman-legalitas -->
+
+<div id="halaman-utama-lanjutan" class="halaman-utama-part">
+<!-- CTA -->
+<section class="bg-brand-25 px-6 py-20 lg:px-8">
+  <div id="ctaCard" class="reveal mx-auto flex max-w-6xl flex-col items-start gap-8 rounded-3xl bg-brand-900 p-7 sm:p-9 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <p id="labelMulaiSekarang" class="text-xs uppercase tracking-[0.2em] text-white">Mulai Sekarang</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-bold leading-tight text-white sm:text-4xl">Siap menjadi bagian dari kebaikan ini?</h2>
+      <p class="mt-4 max-w-md text-sm text-white sm:text-base">Bersama Yayasan Prakarsa Amal Mulia, salurkan kepedulian Anda untuk pendidikan, kesehatan, dan bantuan sosial yang tepat sasaran.</p>
+    </div>
+    <div class="flex shrink-0 flex-col gap-3 sm:flex-row">
+      <a id="ctaBtnDonasi" href="javascript:void(0)" onclick="tampilkanHalaman('halaman-donasi')" class="rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-brand-600 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-50">Donasi Sekarang</a>
+      <button id="ctaBtnPelajari" class="flex items-center justify-center gap-2 rounded-full border border-white bg-white px-7 py-3.5 text-sm font-semibold text-brand-600 transition-all hover:bg-brand-50">Pelajari Lebih Lanjut ↗</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="kontak" class="bg-white px-6 pb-10 pt-20 lg:px-8">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid grid-cols-2 gap-8 sm:gap-12 lg:grid-cols-6">
+      <div class="col-span-2 lg:col-span-2">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="Logo Yayasan Prakarsa Amal Mulia" class="cursor-pointer h-12 w-12" onclick="bukaLogoBesar(event);" />
+          <span class="flex flex-col leading-none">
+            <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-600">Yayasan</span>
+            <span class="text-lg font-bold text-brand-900">Prakarsa Amal Mulia</span>
+          </span>
+        </div>
+        <p class="mt-5 max-w-sm text-sm text-brand-800">Menebar kebaikan, membangun harapan bagi sesama melalui program pendidikan, kesehatan, dan sosial.</p>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-brand-900">Program</h4>
+        <ul class="mt-4 space-y-3">
+          <li><a href="javascript:void(0)" class="footer-link text-sm text-brand-800 transition-colors hover:text-brand-700">Pendidikan</a></li>
+          <li><a href="javascript:void(0)" class="footer-link text-sm text-brand-800 transition-colors hover:text-brand-700">Kesehatan</a></li>
+          <li><a href="javascript:void(0)" class="footer-link text-sm text-brand-800 transition-colors hover:text-brand-700">Sosial &amp; Bencana</a></li>
+          <li><a href="javascript:void(0)" class="footer-link text-sm text-brand-800 transition-colors hover:text-brand-700">Wakaf</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-brand-900">Yayasan</h4>
+        <ul class="mt-4 space-y-3">
+          <li><a href="javascript:void(0)" class="footer-link text-sm text-brand-800 transition-colors hover:text-brand-700">Tentang Kami</a></li>
+          <li><a href="javascript:void(0)" class="footer-link text-sm text-brand-800 transition-colors hover:text-brand-700">Legalitas</a></li>
+          <li><a href="javascript:void(0)" class="footer-link text-sm text-brand-800 transition-colors hover:text-brand-700">Karier</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-brand-900">Kontak Kami</h4>
+        <ul class="mt-4 space-y-3">
+          <li><span class="text-sm text-brand-800">(0264) 839-1620</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-brand-900">Ikuti Kami</h4>
+        <div class="mt-4 flex gap-3">
+          <a href="https://www.instagram.com/ypam_official" target="_blank" rel="noopener" aria-label="Instagram" class="flex h-9 w-9 items-center justify-center rounded-full border border-brand-100 text-[10px] font-bold text-brand-700 transition-colors hover:border-brand-400 hover:bg-brand-50">IG</a>
+          <a href="https://www.facebook.com/share/1DmziXjRuy/" target="_blank" rel="noopener" aria-label="Facebook" class="flex h-9 w-9 items-center justify-center rounded-full border border-brand-100 text-[10px] font-bold text-brand-700 transition-colors hover:border-brand-400 hover:bg-brand-50">FB</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 border-t border-brand-100 pt-6 text-center">
+      <p class="text-xs text-brand-800/45">&copy; Yayasan Prakarsa Amal Mulia 2026. Seluruh hak cipta dilindungi.</p>
+    </div>
+  </div>
+</footer>
+</div><!-- /halaman-utama-lanjutan -->
+
+
+
+<!-- Lightbox: tampilkan logo besar saat ikon logo kecil diklik -->
+<div id="modal-logo-besar" class="hidden fixed inset-0 z-[70] flex items-center justify-center bg-black/70 px-6" onclick="tutupLogoBesar()">
+  <img src="assets/logo.png" alt="Logo Yayasan Prakarsa Amal Mulia" onclick="event.stopPropagation();" class="max-h-[80vh] max-w-[80vw] rounded-full shadow-2xl" />
+  <button type="button" onclick="tutupLogoBesar()" aria-label="Tutup" class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-brand-900">&times;</button>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>

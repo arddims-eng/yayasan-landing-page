@@ -1,0 +1,104 @@
+/* style.css — gaya khusus landing page (di luar utilitas Tailwind). */
+/* Warna dasar halaman (sama untuk semua mode; mode gelap diatur lewat html.dark di bawah) */
+:root { --bg: #ffffff; --fg: #10241A; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--fg); }
+.diagonal-pattern {
+  background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 2px, transparent 2px, transparent 22px);
+}
+.hero-blob {
+  background: radial-gradient(circle at 30% 30%, rgba(212,160,23,0.16), transparent 60%),
+              radial-gradient(circle at 75% 60%, rgba(44,110,53,0.18), transparent 55%);
+}
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease-out, transform .7s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-thumb { background: #B9D7AF; border-radius: 8px; }
+
+/* =========================================================
+   DARK MODE THEME
+   Semua warna dark mode dikumpulkan di sini pakai CSS variable,
+   supaya gampang dicari & diubah dari satu tempat.
+========================================================= */
+html.dark {
+  --dc-bg: #0D2A17;          /* background utama halaman */
+  --dc-surface: #153F21;     /* pengganti elemen ber-bg putih (card, input) */
+  --dc-surface-2: #1F572C;   /* pengganti elemen ber-bg brand-50/100 */
+  --dc-border: #2C6E35;      /* pengganti border-brand-100 */
+  --dc-border-2: #3B8A3E;    /* pengganti border-brand-200 */
+  --dc-text-strong: #F5F9F3; /* pengganti text-brand-900 */
+  --dc-text: #DCEBD6;        /* pengganti text-brand-800 */
+  --dc-text-soft: #B9D7AF;   /* pengganti text-brand-700 */
+  --dc-accent: #8FBE81;      /* pengganti text-brand-500 */
+}
+
+/* --- Base surfaces & teks (berlaku umum lewat wildcard class) --- */
+html.dark body { background-color: var(--dc-bg); }
+html.dark [class*="bg-white"] { background-color: var(--dc-surface) !important; }
+html.dark [class*="bg-brand-25"] { background-color: var(--dc-bg) !important; }
+html.dark [class*="bg-brand-50"] { background-color: var(--dc-surface-2) !important; }
+html.dark [class*="bg-brand-100"] { background-color: var(--dc-surface-2) !important; }
+html.dark [class*="border-brand-100"] { border-color: var(--dc-border) !important; }
+html.dark [class*="border-brand-200"] { border-color: var(--dc-border-2) !important; }
+html.dark [class*="ring-brand-100"] { --tw-ring-color: var(--dc-border) !important; }
+html.dark [class*="text-brand-900"] { color: var(--dc-text-strong) !important; }
+html.dark [class*="text-brand-800"] { color: var(--dc-text) !important; }
+html.dark [class*="text-brand-700"] { color: var(--dc-text-soft) !important; }
+html.dark [class*="text-brand-500"] { color: var(--dc-accent) !important; }
+html.dark input, html.dark textarea { color: var(--dc-text-strong) !important; }
+html.dark #input-nominal { color: #000000 !important; }
+html.dark input::placeholder, html.dark textarea::placeholder { color: var(--dc-accent) !important; }
+
+/* --- Ikon hamburger (nav utama, donasi, kegiatan, legalitas) --- */
+html.dark #bar1, html.dark #bar2,
+html.dark #bar1b, html.dark #bar2b,
+html.dark #bar1c, html.dark #bar2c,
+html.dark #bar1d, html.dark #bar2d { background-color: var(--dc-text-strong) !important; }
+
+/* --- Link footer (nonaktif secara visual, cursor dimatikan) & label section kecil --- */
+.footer-link { cursor: default; }
+html.dark .footer-link { color: #FFFFFF !important; }
+html.dark #labelMengapaKami,
+html.dark #labelTentangKami,
+html.dark #labelMisiKami,
+html.dark #labelVisiMisi { color: #FFFFFF !important; }
+
+/* --- Card program donasi & metode donasi (saat dipilih) --- */
+html.dark .selected-program { background-color: #FFFFFF !important; }
+html.dark .selected-program,
+html.dark .selected-program .program-title,
+html.dark .selected-program .program-desc { color: var(--dc-bg) !important; }
+html.dark .selected-program .program-arrow { background-color: var(--dc-surface) !important; color: #FFFFFF !important; }
+html.dark .selected-method { background-color: #FFFFFF !important; }
+html.dark .selected-method, html.dark .selected-method span { color: var(--dc-bg) !important; }
+
+/* --- Ikon fitur (Penyaluran Cepat, dll) --- */
+html.dark .feature-icon-box { background-color: #FFFFFF !important; }
+html.dark .feature-icon { stroke: var(--dc-border) !important; }
+
+/* --- Card "Langkah Donasi" (3 langkah) --- */
+html.dark #stepsCard { background-color: #FFFFFF !important; }
+html.dark #stepsCard, html.dark #stepsCard * { color: #000000 !important; }
+html.dark .step-card { background-color: #EEF5EB !important; }
+html.dark .step-number { color: var(--dc-text-soft) !important; }
+
+/* --- Angka "3K+" (solid hitam di light, putih di dark) --- */
+#teks3K { color: #000000 !important; }
+html.dark #teks3K { color: #FFFFFF !important; }
+
+/* --- Card CTA "Siap menjadi bagian dari kebaikan ini?" --- */
+html.dark #ctaCard { background-color: #FFFFFF !important; }
+html.dark #ctaCard, html.dark #ctaCard * { color: #000000 !important; }
+html.dark #labelMulaiSekarang { color: #000000 !important; }
+html.dark #ctaBtnDonasi { background-color: var(--dc-border) !important; color: #FFFFFF !important; }
+html.dark #ctaBtnPelajari { border-color: var(--dc-border) !important; background-color: var(--dc-border) !important; color: #FFFFFF !important; }
+
+/* ---- Offset scroll supaya judul tidak tertutup header yang menempel di atas ---- */
+#tentang, #donasi { scroll-margin-top: 90px; }
+#program-donasi, #metode-donasi { scroll-margin-top: 110px; }
+
+/* ---- Label "Mulai Sekarang": tebal maksimal ---- */
+#labelMulaiSekarang { font-weight: 900; }
+
+/* ---- Kolom nominal: selalu putih + teks hitam supaya terbaca di mode terang & gelap ---- */
+#input-nominal { color: #000000 !important; background-color: #FFFFFF !important; }
